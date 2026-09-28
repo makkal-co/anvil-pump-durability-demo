@@ -215,8 +215,10 @@ have no internet at all. It is a stand-in for the operator HMI layer; in a deliv
 screens talk to the controller on the stand.
 
 ```
-index.html        frame, login, SVG symbols
-docs/             the question set, the stand schematic, the I/O map and screenshots
+index.html        frame, login, SVG symbols and logos, favicons inlined
+.nojekyll         tells GitHub Pages to serve files as they are; must stay at the top level
+assets/icons/     favicon and touch-icon sources
+docs/             README material: the question set, schematic, I/O map, logos and screenshots
 css/              styling
 js/data.js        channels, limits, stands, procedures  — the domain lives here
 js/sim.js         the plant model
