@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 470" width="1240" height="470" role="img" aria-labelledby="t d">
+  <title id="t">Stand I/O — cRIO chassis and module map</title>
+  <desc id="d">How the demo's 26 channels and 10 outputs are wired to a cRIO-9047 with seven C Series modules and one spare slot.</desc>
+  <style>
+    text { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; fill: #1d2733; }
+    .h1 { font-size: 19px; font-weight: 700; }
+    .sub { font-size: 12px; fill: #5b6775; }
+    .sn { font-size: 10px; fill: #fff; opacity: .85; }
+    .sm { font-size: 13px; font-weight: 700; fill: #fff; }
+    .sw { font-size: 10px; fill: #fff; }
+    .t { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10.5px; fill: #8a939e; }
+    .c { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 600; }
+    .n { font-size: 11px; }
+    .u { font-size: 10px; fill: #5b6775; }
+    .w { fill: #fff; }
+  </style>
+  <rect width="1240" height="470" fill="#ffffff"/>
+  <text class="h1" x="40" y="38">Stand I/O — one cRIO-9047, seven C Series modules</text>
+  <text class="sub" x="40" y="60">How each stand is wired. Channel names are lab-wide; the module and terminal binding is per stand (Stand Config → Channels &amp; calibration).</text>
+
+  <rect x="30" y="80" width="1182" height="346" rx="8" fill="#e9edf1" stroke="#b9c1ca"/>
+
+  <!-- controller -->
+  <rect x="44" y="96" width="150" height="314" rx="4" fill="#25313d"/>
+  <text x="119" y="126" text-anchor="middle" class="w" style="font-size:15px;font-weight:700">cRIO-9047</text>
+  <text x="119" y="146" text-anchor="middle" class="w" style="font-size:11px">NI Linux Real-Time</text>
+  <text x="119" y="163" text-anchor="middle" class="w" style="font-size:11px">Scan Engine</text>
+  <line x1="60" y1="182" x2="178" y2="182" stroke="#5b6775"/>
+  <text x="119" y="204" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">Calculated on target</text>
+  <text x="119" y="222" text-anchor="middle" class="w" style="font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:600">speedDev</text>
+  <text x="119" y="238" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">|command − actual| rpm</text>
+  <line x1="60" y1="258" x2="178" y2="258" stroke="#5b6775"/>
+  <text x="119" y="280" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">Sample fast, log slow</text>
+  <text x="119" y="296" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">min / max / RMS kept</text>
+  <text x="119" y="312" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">bursts captured on events</text>
+  <line x1="60" y1="332" x2="178" y2="332" stroke="#5b6775"/>
+  <text x="119" y="354" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">Ethernet → HMI,</text>
+  <text x="119" y="370" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">network share,</text>
+  <text x="119" y="386" text-anchor="middle" class="w" style="font-size:10px;opacity:.8">remote view</text>
+
+  <!-- Slot 1 · NI-9203 -->
+  <g transform="translate(206,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#0e7c86"/>
+    <text class="sn" x="8" y="15">Slot 1</text><text class="sm" x="8" y="32">NI-9203</text><text class="sw" x="8" y="46">4–20 mA in</text>
+    <text class="t" x="8" y="74">ai0</text><text class="c" x="36" y="74">dispF</text>
+    <text class="t" x="8" y="93">ai1</text><text class="c" x="36" y="93">caseF</text>
+    <text class="t" x="8" y="112">ai2</text><text class="c" x="36" y="112">hxF</text>
+    <text class="u" x="8" y="302">3 of 8 used</text>
+  </g>
+  <!-- Slot 2 · NI-9205 -->
+  <g transform="translate(331,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#1f5fbf"/>
+    <text class="sn" x="8" y="15">Slot 2</text><text class="sm" x="8" y="32">NI-9205</text><text class="sw" x="8" y="46">±10 V in</text>
+    <text class="t" x="8" y="74">ai0</text><text class="c" x="36" y="74">speed</text>
+    <text class="t" x="8" y="93">ai1</text><text class="c" x="36" y="93">torque</text>
+    <text class="t" x="8" y="112">ai2</text><text class="c" x="36" y="112">sysP</text>
+    <text class="t" x="8" y="131">ai3</text><text class="c" x="36" y="131">accP</text>
+    <text class="t" x="8" y="150">ai4</text><text class="c" x="36" y="150">bypP</text>
+    <text class="t" x="8" y="169">ai5</text><text class="c" x="36" y="169">caseP</text>
+    <text class="t" x="8" y="188">ai6</text><text class="c" x="36" y="188">sucP</text>
+    <text class="t" x="8" y="207">ai7</text><text class="c" x="36" y="207">hxInP</text>
+    <text class="t" x="8" y="226">ai8</text><text class="c" x="36" y="226">hxOutP</text>
+    <text class="t" x="8" y="245">ai9</text><text class="c" x="36" y="245">tankLvl</text>
+    <text class="u" x="8" y="302">10 of 16 used</text>
+  </g>
+  <!-- Slot 3 · NI-9213 -->
+  <g transform="translate(456,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#a23b72"/>
+    <text class="sn" x="8" y="15">Slot 3</text><text class="sm" x="8" y="32">NI-9213</text><text class="sw" x="8" y="46">Thermocouple · type K</text>
+    <text class="t" x="8" y="74">ai0</text><text class="c" x="36" y="74">tankT</text>
+    <text class="t" x="8" y="93">ai1</text><text class="c" x="36" y="93">sucT</text>
+    <text class="t" x="8" y="112">ai2</text><text class="c" x="36" y="112">dispT</text>
+    <text class="t" x="8" y="131">ai3</text><text class="c" x="36" y="131">hxInT</text>
+    <text class="t" x="8" y="150">ai4</text><text class="c" x="36" y="150">hxOutT</text>
+    <text class="t" x="8" y="169">ai5</text><text class="c" x="36" y="169">postHxT</text>
+    <text class="t" x="8" y="188">ai6</text><text class="c" x="36" y="188">sumpT</text>
+    <text class="t" x="8" y="207">ai7</text><text class="c" x="36" y="207">ambT</text>
+    <text class="t" x="8" y="226">ai8</text><text class="c" x="36" y="226">drvBrgT</text>
+    <text class="t" x="8" y="245">ai9</text><text class="c" x="36" y="245">pmpBrgT</text>
+    <text class="t" x="8" y="264">ai10</text><text class="c" x="42" y="264">filtT</text>
+    <text class="t" x="8" y="283">ai11</text><text class="c" x="42" y="283">motWindT</text>
+    <text class="u" x="8" y="302">12 of 16 used</text>
+  </g>
+  <!-- Slot 4 · NI-9213 -->
+  <g transform="translate(581,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#a23b72" opacity=".55"/>
+    <text class="sn" x="8" y="15">Slot 4</text><text class="sm" x="8" y="32">NI-9213</text><text class="sw" x="8" y="46">Thermocouple · type K</text>
+    <text class="u" x="8" y="76" style="font-style:italic">No channels mapped.</text>
+    <text class="u" x="8" y="92" style="font-style:italic">Room for more</text>
+    <text class="u" x="8" y="106" style="font-style:italic">temperature points.</text>
+    <text class="u" x="8" y="302">0 of 16 used</text>
+  </g>
+  <!-- Slot 5 · NI-9264 -->
+  <g transform="translate(706,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#6b4fbf"/>
+    <text class="sn" x="8" y="15">Slot 5</text><text class="sm" x="8" y="32">NI-9264</text><text class="sw" x="8" y="46">Analog out · ±10 V</text>
+    <text class="t" x="8" y="74">ao0</text><text class="n" x="36" y="74">Drive speed</text>
+    <text class="t" x="8" y="93">ao1</text><text class="n" x="36" y="93">Boost pump</text>
+    <text class="t" x="8" y="112">ao2</text><text class="n" x="36" y="112">Cooler fan</text>
+    <text class="t" x="8" y="131">ao3</text><text class="n" x="36" y="131">Load valve</text>
+    <text class="u" x="8" y="302">4 of 16 used</text>
+  </g>
+  <!-- Slot 6 · NI-9435 -->
+  <g transform="translate(831,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#8a6a00"/>
+    <text class="sn" x="8" y="15">Slot 6</text><text class="sm" x="8" y="32">NI-9435</text><text class="sw" x="8" y="46">Digital in · 24 VDC</text>
+    <text class="t" x="8" y="74">di0</text><text class="n" x="36" y="74">Stand power on</text>
+    <text class="t" x="8" y="93">di1</text><text class="n" x="36" y="93">Brake res. trip</text>
+    <text class="u" x="8" y="302">2 of 4 used</text>
+  </g>
+  <!-- Slot 7 · NI-9472 -->
+  <g transform="translate(956,96)">
+    <rect width="120" height="314" rx="4" fill="#fff" stroke="#b9c1ca"/>
+    <rect width="120" height="54" rx="4" fill="#4a5663"/>
+    <text class="sn" x="8" y="15">Slot 7</text><text class="sm" x="8" y="32">NI-9472</text><text class="sw" x="8" y="46">Digital out · 24 VDC</text>
+    <text class="t" x="8" y="74">do0</text><text class="n" x="36" y="74">Tank heater</text>
+    <text class="t" x="8" y="93">do1</text><text class="n" x="36" y="93">Cooler heater</text>
+    <text class="t" x="8" y="112">do2</text><text class="n" x="36" y="112">Bypass valve</text>
+    <text class="t" x="8" y="131">do3</text><text class="n" x="36" y="131">Safety relay</text>
+    <text class="u" x="8" y="150">do3: hard shutdown only</text>
+    <text class="u" x="8" y="302">4 of 8 used</text>
+  </g>
+  <!-- Slot 8 · spare -->
+  <g transform="translate(1081,96)">
+    <rect width="120" height="314" rx="4" fill="#f4f6f8" stroke="#8a939e" stroke-dasharray="5 4"/>
+    <text x="8" y="15" style="font-size:10px;fill:#5b6775">Slot 8</text>
+    <text x="8" y="32" style="font-size:13px;font-weight:700;fill:#5b6775">SPARE</text>
+    <text class="u" x="8" y="46">the only free slot</text>
+  </g>
+
+  <text class="sub" x="40" y="452">Illustrative: an invented stand, drawn from the demo’s own channel map (js/data.js, js/scr-config.js). Terminal numbers are the demo’s, not a wiring drawing.</text>
+</svg>

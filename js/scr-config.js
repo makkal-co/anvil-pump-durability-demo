@@ -168,7 +168,7 @@
   const RATE_OPTS = { tc: [1, 2, 4], av: [100, 1000, 5000, 10000], ai: [100, 1000, 5000, 10000], di: [10, 100, 1000] };
   const LOG_OPTS = [1, 5, 10, 100, 1000];
   const MODMAX = { tc: ['NI-9213', 75, 16], av: ['NI-9205', 250000, 16], ai: ['NI-9203', 200000, 8] };
-  const GROUPS = [['tc', 'Thermocouples', 19], ['av', 'Analog 0–10 V', 9], ['ai', 'Analog 4–20 mA', 3], ['di', 'Digital inputs', 2]];
+  const GROUPS = [['tc', 'Thermocouples', TC.length], ['av', 'Analog 0–10 V', AV.length], ['ai', 'Analog 4–20 mA', AI.length], ['di', 'Digital inputs', 2]];
 
   function estimate(c) {
     const setup = r.setup || M.setupById('end2000');
@@ -176,10 +176,10 @@
     const stats = Math.max(1, ['mean', 'min', 'max', 'rms'].filter((s) => c.stats[s]).length);
     // Extra statistics only exist where the log rate is below the acquisition rate (something to decimate)
     const k = (g) => (c.rates[g].acq > c.rates[g].log ? stats : 1);
-    const cont = (9 * c.rates.av.log * 4 * k('av') + 3 * c.rates.ai.log * 4 * k('ai') + 19 * c.rates.tc.log * 4 * k('tc')) * T;
+    const cont = (AV.length * c.rates.av.log * 4 * k('av') + AI.length * c.rates.ai.log * 4 * k('ai') + TC.length * c.rates.tc.log * 4 * k('tc')) * T;
     const bursts = (c.trig.red ? 5 : 0) + (c.trig.yellow ? 20 : 0) + (c.trig.manual ? 10 : 0) + (c.trig.step ? P.cycles(setup) : 0);
-    const burst = bursts * 12 * c.rates.av.acq * 2 * c.burstSec * 4;
-    const full = (12 * 1000 * 4 + 19 * 4) * T;
+    const burst = bursts * (AV.length + AI.length) * c.rates.av.acq * 2 * c.burstSec * 4;
+    const full = ((AV.length + AI.length) * 1000 * 4 + TC.length * 4) * T;
     return { setup, T, stats, cont, bursts, burst, total: cont + burst, full };
   }
 
@@ -217,7 +217,7 @@
           <div class="gauge"><i style="width:${pct(e.total)}%;${e.total > 4e9 ? 'background:var(--bad)' : ''}"></i><span>${((e.total / 4e9) * 100).toFixed(0)}% of 4 GB controller storage</span></div>
           <div class="estrow cmp"><span>Same test at 1 kHz continuous, all channels</span><b class="num store-bad">${P.fmtBytes(e.full)}</b></div>
           <div class="gauge"><i style="width:100%;background:var(--bad)"></i><span>${Math.round(e.full / 4e9).toLocaleString()}× the controller's storage</span></div>
-          <div class="muted">4 GB is from the RFQ BOM — to verify. Logs are also mirrored off the controller (Logging tab).</div>
+          <div class="muted">4 GB of log space on the controller is an illustrative figure. Logs are also mirrored off the controller (Logging tab).</div>
         </div>
       </div>
     </div>`;
@@ -225,9 +225,9 @@
 
   const SLOTS = [
     { mod: 'NI-9203', what: 'Analog in · 4–20 mA', used: 3, of: 8 },
-    { mod: 'NI-9205', what: 'Analog in · ±10 V', used: 9, of: 16 },
-    { mod: 'NI-9213', what: 'Thermocouple', used: 16, of: 16 },
-    { mod: 'NI-9213', what: 'Thermocouple', used: 3, of: 16 },
+    { mod: 'NI-9205', what: 'Analog in · ±10 V', used: 10, of: 16 },
+    { mod: 'NI-9213', what: 'Thermocouple', used: 12, of: 16 },
+    { mod: 'NI-9213', what: 'Thermocouple', used: 0, of: 16 },
     { mod: 'NI-9264', what: 'Analog out · ±10 V', used: 4, of: 16 },
     { mod: 'NI-9435', what: 'Digital in · 24 VDC', used: 2, of: 4 },
     { mod: 'NI-9472', what: 'Digital out · 24 VDC', used: 4, of: 8 },
@@ -246,9 +246,9 @@
     ];
     return `<div class="hw">
       <div class="panel">
-        <div class="panel-h">cRIO-9047 chassis <span class="muted" style="font-weight:400">— ${r.name}</span><span class="sp"></span><span class="badge warn" title="From the RFQ BOM; confirm against the datasheet">verify: 8 slots</span></div>
+        <div class="panel-h">cRIO-9047 chassis <span class="muted" style="font-weight:400">— ${r.name}</span></div>
         <div class="chassis"><div class="ctrl"><b>cRIO-9047</b><div>NI Linux RT 64-bit</div><div class="num">10.20.3.${10 + r.id}</div><div><i class="led ok"></i> Scan Engine</div></div>${slots}</div>
-        <div class="mc-note">Seven modules fill seven of eight slots. The spare <b>channels</b> are generous (13 thermocouple, 7 voltage, 5 current), but only one <b>slot</b> is left for a new module type.</div>
+        <div class="mc-note">Seven modules fill seven of eight slots. The spare <b>channels</b> are generous (20 thermocouple, 6 voltage, 5 current), but only one <b>slot</b> is left for a new module type.</div>
       </div>
       <div class="hw-2">
         <div class="panel">
