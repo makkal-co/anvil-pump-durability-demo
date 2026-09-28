@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anvil — hydraulic pump durability demo</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/batch2.css">
+<link rel="stylesheet" href="css/batch3.css">
+<link rel="stylesheet" href="css/brand.css">
+</head>
+<body class="pre-login">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mkLogo" viewBox="0 0 194.25 78.75"><g fill="currentColor"><g transform="translate(15.241143, 52.872868)"><g><path d="M 44.75 -24.46875 L 42.75 -24.46875 L 42.75 -6.53125 L 44.75 -6.53125 L 44.75 0 L 29.6875 0 L 29.6875 -6.53125 L 31.59375 -6.53125 L 31.59375 -20.484375 L 24.828125 0 L 18.921875 0 L 11.953125 -20.28125 L 11.953125 -6.53125 L 13.859375 -6.53125 L 13.859375 0 L 0.796875 0 L 0.796875 -6.53125 L 2.796875 -6.53125 L 2.796875 -24.46875 L 0.796875 -24.46875 L 0.796875 -31 L 19.046875 -31 L 23.1875 -18.5625 L 27.171875 -31 L 44.75 -31 Z M 44.75 -24.46875 "/></g></g></g><g fill="currentColor"><g transform="translate(60.780774, 52.872868)"><g><path d="M 23.953125 -6.53125 L 23.953125 0 L 13.421875 0 L 13.421875 -2.703125 C 12.835938 -1.859375 12.019531 -1.101562 10.96875 -0.4375 C 9.925781 0.226562 8.644531 0.5625 7.125 0.5625 C 5.132812 0.5625 3.566406 0.03125 2.421875 -1.03125 C 1.285156 -2.09375 0.71875 -3.59375 0.71875 -5.53125 C 0.71875 -10.550781 4.976562 -13.128906 13.5 -13.265625 C 13.425781 -14.171875 13.082031 -14.789062 12.46875 -15.125 C 11.863281 -15.457031 10.828125 -15.625 9.359375 -15.625 C 8.171875 -15.625 6.890625 -15.492188 5.515625 -15.234375 C 4.148438 -14.984375 2.894531 -14.644531 1.75 -14.21875 L 1.75 -21.5625 C 3.15625 -21.90625 4.679688 -22.179688 6.328125 -22.390625 C 7.984375 -22.609375 9.59375 -22.71875 11.15625 -22.71875 C 15.113281 -22.71875 17.941406 -22 19.640625 -20.5625 C 21.335938 -19.125 22.1875 -16.90625 22.1875 -13.90625 L 22.1875 -6.53125 Z M 13.421875 -9.328125 C 12.234375 -9.328125 11.3125 -9.164062 10.65625 -8.84375 C 10.007812 -8.53125 9.6875 -8 9.6875 -7.25 C 9.6875 -6.800781 9.820312 -6.4375 10.09375 -6.15625 C 10.375 -5.875 10.769531 -5.734375 11.28125 -5.734375 C 11.96875 -5.734375 12.492188 -6.023438 12.859375 -6.609375 C 13.234375 -7.191406 13.421875 -8.015625 13.421875 -9.078125 Z M 13.421875 -9.328125 "/></g></g></g><g fill="currentColor"><g transform="translate(85.283721, 52.872868)"><g><path d="M 24.75 -6.53125 L 26.453125 -6.53125 L 26.453125 0 L 16.6875 0 L 12.59375 -7.65625 L 11.640625 -7.65625 L 11.640625 0 L 0.71875 0 L 0.71875 -6.53125 L 2.46875 -6.53125 L 2.46875 -24.46875 L 0.71875 -24.46875 L 0.71875 -31 L 11.640625 -31 L 11.640625 -14.828125 L 12.59375 -14.828125 L 17.53125 -22.15625 L 25.9375 -22.15625 L 25.9375 -15.625 L 24.3125 -15.625 L 20.921875 -11.828125 Z M 24.75 -6.53125 "/></g></g></g><g fill="currentColor"><g transform="translate(112.296725, 52.872868)"><g><path d="M 24.75 -6.53125 L 26.453125 -6.53125 L 26.453125 0 L 16.6875 0 L 12.59375 -7.65625 L 11.640625 -7.65625 L 11.640625 0 L 0.71875 0 L 0.71875 -6.53125 L 2.46875 -6.53125 L 2.46875 -24.46875 L 0.71875 -24.46875 L 0.71875 -31 L 11.640625 -31 L 11.640625 -14.828125 L 12.59375 -14.828125 L 17.53125 -22.15625 L 25.9375 -22.15625 L 25.9375 -15.625 L 24.3125 -15.625 L 20.921875 -11.828125 Z M 24.75 -6.53125 "/></g></g></g><g fill="currentColor"><g transform="translate(139.309728, 52.872868)"><g><path d="M 23.953125 -6.53125 L 23.953125 0 L 13.421875 0 L 13.421875 -2.703125 C 12.835938 -1.859375 12.019531 -1.101562 10.96875 -0.4375 C 9.925781 0.226562 8.644531 0.5625 7.125 0.5625 C 5.132812 0.5625 3.566406 0.03125 2.421875 -1.03125 C 1.285156 -2.09375 0.71875 -3.59375 0.71875 -5.53125 C 0.71875 -10.550781 4.976562 -13.128906 13.5 -13.265625 C 13.425781 -14.171875 13.082031 -14.789062 12.46875 -15.125 C 11.863281 -15.457031 10.828125 -15.625 9.359375 -15.625 C 8.171875 -15.625 6.890625 -15.492188 5.515625 -15.234375 C 4.148438 -14.984375 2.894531 -14.644531 1.75 -14.21875 L 1.75 -21.5625 C 3.15625 -21.90625 4.679688 -22.179688 6.328125 -22.390625 C 7.984375 -22.609375 9.59375 -22.71875 11.15625 -22.71875 C 15.113281 -22.71875 17.941406 -22 19.640625 -20.5625 C 21.335938 -19.125 22.1875 -16.90625 22.1875 -13.90625 L 22.1875 -6.53125 Z M 13.421875 -9.328125 C 12.234375 -9.328125 11.3125 -9.164062 10.65625 -8.84375 C 10.007812 -8.53125 9.6875 -8 9.6875 -7.25 C 9.6875 -6.800781 9.820312 -6.4375 10.09375 -6.15625 C 10.375 -5.875 10.769531 -5.734375 11.28125 -5.734375 C 11.96875 -5.734375 12.492188 -6.023438 12.859375 -6.609375 C 13.234375 -7.191406 13.421875 -8.015625 13.421875 -9.078125 Z M 13.421875 -9.328125 "/></g></g></g><g fill="currentColor"><g transform="translate(163.812675, 52.872868)"><g><path d="M 0.71875 0.046875 L 0.71875 -6.53125 L 2.46875 -6.53125 L 2.46875 -24.46875 L 0.71875 -24.46875 L 0.71875 -31 L 11.640625 -31 L 11.640625 -6.53125 L 13.390625 -6.53125 L 13.390625 0.046875 Z M 0.71875 0.046875 "/></g></g></g></symbol><symbol id="mkAnvil" viewBox="0 0 64 50"><path fill="currentColor" d="M3 15.5 C9 11 14 7.5 20 6.5 L61 6.5 L61 20.5 L45 20.5 L43.5 32 L52.5 32 L52.5 44 L13.5 44 L13.5 32 L22.5 32 L21 20.5 C14 20 7 18.2 3 15.5 Z"/></symbol></svg>
+
+<!-- Login -->
+<div id="login" class="login">
+  <div class="login-card">
+    <div class="login-head"><span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><b class="brand anvil-lockup lg"><svg class="anvil-mark" viewBox="0 0 64 50" aria-hidden="true"><use href="#mkAnvil"></use></svg><span class="anvil-word">Anvil</span></b></span><div>Hydraulic pump durability lab · demonstration interface · simulated data</div></div>
+    <form class="login-body" id="loginForm">
+      <label>User <select id="loginUser"></select></label>
+      <label>Password <input type="password" id="loginPw" value="demo" autocomplete="off"></label>
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button type="submit" class="btn primary">Log in</button>
+      </div>
+    </form>
+    <div class="login-sum" id="loginSum"></div>
+    <p class="mk-conf-note"><b>DEMONSTRATION</b> — every stand, channel, procedure and reading
+    here is invented. It shows how we build test-system software; it is not a product and it
+    describes no system that anyone is running. Any password works.</p>
+  </div>
+</div>
+
+<!-- Application -->
+<div id="app" hidden>
+  <header class="hdr">
+    <span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><span class="brand anvil-lockup"><svg class="anvil-mark" viewBox="0 0 64 50" aria-hidden="true"><use href="#mkAnvil"></use></svg><span class="anvil-word">Anvil</span></span></span>
+    <span class="ctx" id="hdrCtx"></span>
+    <span class="scope" id="hdrScope" title="Which stands this station shows"></span>
+    <span class="sp"></span>
+    <span class="clock" id="hdrClock"></span>
+    <select id="hdrSpeed" title="Simulation speed (demo only)">
+      <option value="1">Real time</option>
+      <option value="60" selected>×60 — 1 s = 1 min</option>
+      <option value="600">×600 — 1 s = 10 min</option>
+    </select>
+    <button class="hbtn" id="hdrDemo">Demo ▾</button>
+    <button class="hbtn" id="hdrTour">▶ Walkthrough</button>
+    <span class="user" id="hdrUser"></span>
+    <button class="hbtn" id="hdrLogout">Log out</button>
+  </header>
+  <nav class="ribbon" id="ribbon"></nav>
+  <div class="body">
+    <aside class="rail" id="rail"></aside>
+    <main id="screen"></main>
+  </div>
+  <footer class="status" id="status"></footer>
+</div>
+
+<div id="tip" class="tip" hidden></div>
+<script>
+  // Surface script errors on screen instead of failing silently.
+  window.addEventListener('error', function (e) {
+    var d = document.createElement('div');
+    d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99;background:#9b1c18;color:#fff;padding:6px 10px;font:12px Consolas,monospace';
+    d.textContent = 'Script error: ' + e.message + ' (' + (e.filename || '').split('/').pop() + ':' + e.lineno + ')' + (e.error && e.error.stack ? ' | ' + e.error.stack.split('
+').slice(0, 3).join(' << ') : '');
+    document.body.appendChild(d);
+  });
+</script>
+
+<script charset="utf-8" src="js/data.js"></script>
+<script charset="utf-8" src="js/profile.js"></script>
+<script charset="utf-8" src="js/sim.js"></script>
+<script charset="utf-8" src="js/chart.js"></script>
+<script charset="utf-8" src="js/ui.js"></script>
+<script charset="utf-8" src="js/scr-overview.js"></script>
+<script charset="utf-8" src="js/scr-graph.js"></script>
+<script charset="utf-8" src="js/setups-preview.js"></script>
+<script charset="utf-8" src="js/scr-setups.js"></script>
+<script charset="utf-8" src="js/scr-manual.js"></script>
+<script charset="utf-8" src="js/scr-alarms.js"></script>
+<script charset="utf-8" src="js/scr-config.js"></script>
+<script charset="utf-8" src="js/scr-data.js"></script>
+<script charset="utf-8" src="js/scr-remote.js"></script>
+<script charset="utf-8" src="js/tour.js"></script>
+<script charset="utf-8" src="js/app.js"></script>
+<script charset="utf-8" src="js/brand.js"></script>
+</body>
+</html>

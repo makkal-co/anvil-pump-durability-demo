@@ -1,0 +1,195 @@
+/* Screens and controls added after the 22 Sep 2026 review:
+   Data & History (N1), cell-scoped visibility (M1), non-maskable alarms (N3),
+   channel mapping editor (N4), live trend in Manual Control. */
+
+/* ---------- Data & History ---------- */
+
+.dh { display: grid; grid-template-rows: auto minmax(0, 1fr); height: 100%; min-height: 0; }
+.dh-bar { display: flex; align-items: center; gap: 10px; padding: 6px 10px; background: var(--panel2); border-bottom: 1px solid var(--line); }
+.dh-body { display: grid; grid-template-columns: 268px 196px minmax(0, 1fr); min-height: 0; }
+.dh-runs { display: grid; grid-template-rows: auto minmax(0, 1fr); border-right: 1px solid var(--line); min-height: 0; }
+.dh-filters { display: flex; gap: 6px; padding: 6px; border-bottom: 1px solid var(--line); }
+.dh-filters select { flex: 1; min-width: 0; }
+.dh-list { overflow-y: auto; }
+.dh-ch { overflow-y: auto; border-right: 1px solid var(--line); background: var(--panel); }
+.dh-ch table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.dh-ch .grp { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 8px 2px; }
+.dh-ch tr.ch { cursor: pointer; }
+.dh-ch tr.ch:hover { background: #eef2f6; }
+.dh-ch tr.ch.sel { background: #e7eefb; }
+.dh-ch td { padding: 3px 8px; }
+.dh-ch td .sw { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; }
+.dh-ch td.u { color: var(--muted); text-align: right; }
+.dh-main { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; min-height: 0; }
+.dh-head { padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.dh-head .num { font-size: 11px; }
+
+.run { padding: 7px 10px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.run:hover { background: #eef2f6; }
+.run.on { background: #e7eefb; border-left: 3px solid var(--accent); padding-left: 7px; }
+.run .r1 { display: flex; align-items: center; gap: 6px; }
+.run .r1 b { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.run .r2 { font-size: 11px; }
+
+.banner.bad-banner { border-color: var(--bad); background: #fdecea; color: #7a1c14; margin-top: 6px; }
+
+/* ---------- Cell scope badge ---------- */
+
+.hdr .scope { background: #34424f; border: 1px solid #4a5968; border-radius: 3px; padding: 2px 8px; font-size: 11px; color: #cfe0f5; }
+.hdr .scope b { color: #fff; }
+
+/* ---------- Non-maskable alarms ---------- */
+
+.lockmask { color: var(--muted); cursor: not-allowed; }
+
+/* ---------- Live trend in Manual Control ---------- */
+
+.mtrend { border-top: 1px solid var(--line); background: var(--panel); }
+.mtrend .mt-h { display: flex; align-items: center; gap: 8px; padding: 5px 10px; font-size: 12px; font-weight: 600; border-bottom: 1px solid var(--line); }
+.mtrend .mt-h .muted { font-weight: 400; }
+.mtrend .mt-p { height: 132px; padding: 4px 6px; }
+.mtrend canvas { width: 100%; height: 100%; display: block; }
+
+/* Racks in another cell: watchable, stoppable, not drivable from here. */
+.rail .item.vo { opacity: .82; }
+.rail .item .vomark { color: var(--muted); font-size: 10px; margin-left: 4px; }
+
+/* Trend channel picker */
+.pickwrap { max-height: 46vh; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1px 12px; }
+.pickgrp { grid-column: 1 / -1; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 0 2px; }
+label.pick { display: grid; grid-template-columns: 16px minmax(0, 1fr) 42px; align-items: center;
+             gap: 8px; padding: 3px 0; font-size: 12px; white-space: nowrap; }
+label.pick > span { text-align: right; }
+.mtrend .mt-h .legend { display: flex; gap: 10px; flex-wrap: wrap; font-weight: 400; }
+.mtrend .mt-h .legend i { display: inline-block; width: 9px; height: 3px; margin-right: 4px; vertical-align: middle; }
+
+/* A panel that should not be squeezed into a column of the auto-fit grid. */
+.rates > .panel.span-all { grid-column: 1 / -1; }
+
+/* Common parameters: label, value and what it drives, stacked so the binding is visible. */
+.common label { flex-direction: column; align-items: flex-start; gap: 2px; }
+.common .cl { font-weight: 600; }
+.common .cin { display: inline-flex; align-items: center; gap: 6px; }
+.common .cbind { font-size: 11px; color: var(--muted, #6b7785); }
+
+/* Explicit end-of-loop row so a loop's start and end are both visible. */
+table.grid tr.endrow td { background: #fbf6ea; color: #6b5a2a; font-size: 12px; border-top: 0; }
+table.grid tr.endrow.sel td { background: #f3e7c6; }
+
+/* Advance condition: channel, operator, value, unit - and what a timeout does. */
+.cond { display: flex; align-items: center; gap: 3px; }
+.cond select { font-size: 12px; }
+.cond select:first-child { width: 152px; }
+.cond select:nth-child(2) { width: 52px; }
+.cond2 { font-size: 11px; color: var(--muted); margin-top: 2px; display: flex; align-items: center; gap: 4px; }
+.cond2 select { font-size: 11px; padding: 0 2px; }
+.tmo { font-size: 10px; color: var(--muted); line-height: 1; }
+
+/* The id a test setup's advance condition refers to, under the human channel name. */
+.chid { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+table.grid td.id { width: 38px; text-align: right; }
+
+/* ---- Step grid: fixed, draggable columns -------------------------------
+   The grid used to size itself from its contents, so adding the condition
+   editor squeezed Type and Step name until their text disappeared. Columns
+   now have declared widths the reader can drag, and every cell fills its
+   column instead of carrying its own width. */
+/* Scoped to the step grid. The .grid class is shared with Rack Config, Alarms and
+   Data & History, and a fixed layout there split those tables into equal columns and
+   clipped their buttons - they size themselves from their contents, as they should. */
+.ts table.grid { table-layout: fixed; }
+.ts table.grid th, .ts table.grid td { border-right: 1px solid #eef1f4; overflow: hidden; text-overflow: ellipsis; }
+.ts table.grid th:last-child, .ts table.grid td:last-child { border-right: 0; }
+.ts table.grid th.num, .ts table.grid th.num small { text-align: right; }
+.ts table.grid input.n { width: 100%; }
+.ts table.grid .ttype select, .ts table.grid .tname input { width: 100%; }
+.ts table.grid td.id { width: auto; }
+
+/* Every other grid keeps auto widths, and only gains the alignment: a column of
+   figures reads under a header that sits over the figures. */
+table.grid th.num, table.grid td.num { text-align: right; }
+table.grid th.num small { text-align: right; }
+
+/* Threshold pairs and mask ticks share their column rather than fixing a width. */
+.ts .pair { display: flex; gap: 2px; }
+.ts .pair input.n { flex: 1 1 0; min-width: 0; width: auto; }
+.ts .mk { display: flex; justify-content: center; gap: 8px; }
+
+/* The advance condition flexes with its column. */
+.cond select:first-child { width: auto; flex: 1 1 0; min-width: 0; }
+.cond select:nth-child(2) { flex: 0 0 48px; width: 48px; }
+.cond input.n { flex: 0 0 52px; width: 52px; }
+.cond2 select { flex: 1 1 0; min-width: 0; }
+
+/* The resize handle, and the cursor while dragging. */
+.rz { position: absolute; top: 0; right: -3px; width: 7px; height: 100%; cursor: col-resize; z-index: 3; }
+.rz:hover { background: var(--accent); opacity: .35; }
+body.rzing, body.rzing * { cursor: col-resize !important; user-select: none; }
+
+/* Loop repeat count: the multiplier sign and the field share the Duration column. */
+.rep { display: flex; align-items: center; gap: 3px; }
+.rep input.n { flex: 1 1 0; min-width: 0; width: auto; }
+
+/* Threshold cell: the yellow/red pair, with the "inherit again" button kept on the same line. */
+.thcell { display: flex; align-items: center; gap: 2px; }
+.thcell .pair { flex: 1 1 0; min-width: 0; }
+.thcell .rst { flex: 0 0 18px; padding: 0; line-height: 16px; font-size: 11px; }
+
+/* ---- Collapsible side panes --------------------------------------------
+   Every screen keeps its lists down one side. Each collapses to a strip that
+   still carries the control to bring it back, so nothing is ever lost - and a
+   collapsed rack rail keeps its LEDs, because the lab at a glance is the one
+   thing an operator should never have to expand a pane to see. */
+.pchdr { display: flex; align-items: center; gap: 6px; }
+.pchev { border: 1px solid transparent; background: transparent; color: var(--muted); cursor: pointer;
+         font-size: 15px; line-height: 1; padding: 1px 5px; border-radius: 3px; }
+.pchev:hover { background: #dde3e9; color: var(--ink); }
+.pane > .pchdr { padding: 6px 8px; border-bottom: 1px solid var(--line); background: var(--panel2);
+                 font-weight: 600; font-size: 12px; }
+
+/* Collapsed: the strip is the control, top to bottom, with the pane's name down it. */
+.pane.pc > * { display: none; }
+.pane.pc > .pchdr { display: flex; flex-direction: column; align-items: center; gap: 10px;
+                    height: 100%; padding: 8px 0; border-bottom: 0; cursor: pointer; background: var(--panel2); }
+.pane.pc > .pchdr:hover { background: #dde3e9; }
+.pane.pc > .pchdr > span:not(.pcname) { display: none; }
+.pcname { writing-mode: vertical-rl; font-size: 11px; font-weight: 600; color: var(--muted);
+          letter-spacing: .04em; white-space: nowrap; cursor: pointer; }
+.pane.pc > .pchdr .pchev { font-size: 13px; }
+
+body.pc-lib .ts { grid-template-columns: 30px 1fr; }
+body.pc-gv .gv { grid-template-columns: 30px 1fr; }
+body.pc-al .al-body { grid-template-columns: minmax(0, 1fr) 30px; }
+body.pc-runs .dh-body { grid-template-columns: 30px 196px minmax(0, 1fr); }
+body.pc-ch .dh-body { grid-template-columns: 268px 30px minmax(0, 1fr); }
+body.pc-runs.pc-ch .dh-body { grid-template-columns: 30px 30px minmax(0, 1fr); }
+
+/* The rail collapses to a LED strip with the rack number, not to nothing. */
+body.pc-rail .body { grid-template-columns: 54px 1fr; }
+body.pc-rail .rail .item { justify-content: center; gap: 4px; padding: 6px 0; }
+body.pc-rail .rail .item .rn, body.pc-rail .rail .item .sub, body.pc-rail .rail .item .vomark { display: none; }
+body.pc-rail .rail .item[data-num]::after { content: attr(data-num); font-size: 11px; color: var(--muted); }
+/* Collapsed the rail keeps its cell markers, shortened to C1, C2. */
+.rail .cell .cn { display: none; }
+body.pc-rail .rail .cell { padding: 6px 0 2px; text-align: center; margin: 2px 6px 0;
+                           border-top: 1px solid var(--line2); }
+body.pc-rail .rail .cell .cw { display: none; }
+body.pc-rail .rail .cell .cn { display: inline; }
+/* The rail's own control is pinned bottom-left and does not move between states. */
+.rail { display: grid; grid-template-rows: 1fr auto; padding: 6px 0 0; }
+.rail .items { overflow-y: auto; }
+.rail .pchdr { border-top: 1px solid var(--line2); padding: 5px 10px; justify-content: flex-start; cursor: pointer; }
+.rail .pchdr:hover { background: #dde3e9; }
+body.pc-rail .rail .pchdr { justify-content: center; padding-left: 0; padding-right: 0; }
+.rail .pchdr .pcname { writing-mode: horizontal-tb; }
+body.pc-rail .rail .pchdr .pcname { display: none; }
+
+/* ---- Live value columns hold their width --------------------------------
+   These lists re-render every tick. With auto table layout the value column is
+   as wide as its widest reading, so the moment a channel goes from 97.7 to
+   100.1 every column shifts and the whole list jitters sideways. Declared
+   widths and tabular figures keep it still. */
+.gv-list table { table-layout: fixed; }
+.gv-list col.cv { width: 74px; } .gv-list col.cu { width: 46px; } .gv-list col.cl { width: 28px; }
+.gv-list td.v { font-variant-numeric: tabular-nums; }
+.gv-list tr.ch > td:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
