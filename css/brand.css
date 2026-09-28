@@ -88,3 +88,31 @@ body.pre-login #mkBadge { bottom: 14px; right: 14px; }
 .mk-conf-note b { color: var(--mk-orange-ink); letter-spacing: .06em; }
 
 @media print { #mkWm { opacity: .11; } }
+
+/* ---- Enquiry overlay ----------------------------------------------------
+   Deliberately not a gate: it opens on the header button, and once unprompted
+   after the visitor has looked at three screens. Dismissed means dismissed. */
+.hbtn.talk { border-color: var(--mk-orange); color: #fff; }
+.hbtn.talk:hover { background: var(--mk-orange); }
+
+.lead-wrap { position: fixed; inset: 0; z-index: 9100; background: rgba(12, 18, 24, .55);
+             display: flex; align-items: center; justify-content: center; padding: 20px; }
+.lead-card { background: #fff; border-radius: 5px; width: 460px; max-width: 100%;
+             max-height: 90vh; overflow-y: auto; padding: 20px 22px 18px; position: relative;
+             box-shadow: 0 10px 40px rgba(0, 0, 0, .35); border-top: 4px solid var(--mk-orange); }
+.lead-x { position: absolute; top: 8px; right: 10px; border: 0; background: transparent;
+          font-size: 22px; line-height: 1; color: var(--muted, #6b7785); cursor: pointer; }
+.lead-x:hover { color: var(--ink, #16202a); }
+.lead-card h3 { margin: 0 0 6px; font-size: 17px; }
+.lead-sub { margin: 0 0 14px; font-size: 13px; color: var(--muted, #6b7785); line-height: 1.5; }
+.lead-form label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 9px; }
+.lead-form input, .lead-form select { display: block; width: 100%; margin-top: 3px; padding: 6px 8px;
+             border: 1px solid var(--line, #d6dde4); border-radius: 3px; font: inherit; font-weight: 400; }
+.lead-form input:focus, .lead-form select:focus { border-color: var(--mk-orange); outline: none; }
+.lead-priv { font-size: 11px; color: var(--muted, #6b7785); line-height: 1.5; margin: 12px 0; }
+.lead-foot { display: flex; align-items: center; gap: 12px; }
+.lead-alt { font-size: 12px; color: var(--muted, #6b7785); margin-right: auto; }
+.lead-msg { font-size: 12px; color: #9b1c18; background: #fdecea; border-radius: 3px;
+            padding: 8px 10px; margin: 12px 0 0; line-height: 1.5; }
+.lead-ok { font-size: 14px; line-height: 1.6; margin: 10px 0; }
+@media (max-width: 520px) { .lead-card { padding: 16px; } }
