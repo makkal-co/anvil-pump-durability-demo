@@ -14,13 +14,13 @@
 
 /* The mark and the word are one object: tight inside, clear space outside. */
 .anvil-lockup { display: inline-flex; align-items: center; gap: 5px; }
-.anvil-mark { height: 17px; width: auto; color: var(--mk-orange); flex: none; }
-.anvil-word {
-  font-family: var(--mk-slab);
-  font-weight: 700; font-size: 19px; letter-spacing: .02em; text-transform: none;
-}
-.anvil-lockup.lg .anvil-mark { height: 26px; }
-.anvil-lockup.lg .anvil-word { font-size: 28px; }
+.anvil-mark { height: 16px; width: auto; color: var(--mk-orange); flex: none; }
+/* The word is Alfa Slab One, the logo's face, drawn as outlines (#mkAnvilWord in index.html)
+   so it looks the same on every machine and no font is fetched. Heights match the Makkal
+   logo's cap height, as the README lockup does (docs/img/logo-*.svg). */
+.anvil-word { height: 12px; width: auto; flex: none; display: block; }
+.anvil-lockup.lg .anvil-mark { height: 19px; }
+.anvil-lockup.lg .anvil-word { height: 14px; }
 
 /* ---------- logo ---------- */
 

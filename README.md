@@ -1,3 +1,12 @@
+<p align="center">
+  <a href="https://makkal-co.github.io/anvil-pump-durability-demo/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="docs/img/logo-dark.svg">
+      <img src="docs/img/logo-light.svg" alt="Makkal · Anvil" width="420">
+    </picture>
+  </a>
+</p>
+
 # Anvil — hydraulic pump durability lab
 
 **We build the software that runs test rigs, and hand you the keys.**
