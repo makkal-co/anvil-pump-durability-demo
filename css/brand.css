@@ -116,3 +116,13 @@ body.pre-login #mkBadge { bottom: 14px; right: 14px; }
             padding: 8px 10px; margin: 12px 0 0; line-height: 1.5; }
 .lead-ok { font-size: 14px; line-height: 1.6; margin: 10px 0; }
 @media (max-width: 520px) { .lead-card { padding: 16px; } }
+
+/* ---- First-run orientation ---------------------------------------------- */
+.ob-wrap { position: fixed; inset: 0; z-index: 9050; background: rgba(12, 18, 24, .45);
+           display: flex; align-items: center; justify-content: center; padding: 20px; }
+.ob-card { background: #fff; border-radius: 5px; width: 420px; max-width: 100%; padding: 20px 22px 18px;
+           box-shadow: 0 10px 40px rgba(0, 0, 0, .3); border-top: 4px solid var(--mk-orange); }
+.ob-card h3 { margin: 0 0 8px; font-size: 17px; }
+.ob-card p { margin: 0 0 10px; font-size: 13px; line-height: 1.55; }
+.ob-card .ob-sub { color: var(--muted, #6b7785); }
+.ob-foot { display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; }

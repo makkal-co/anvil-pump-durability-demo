@@ -105,15 +105,18 @@
     // explicit request in the URL, not the overlay putting itself in anyone's way.
     if (new URLSearchParams(location.hash.slice(1)).get('lead') === '1') open();
 
-    // Offer it once after the visitor has actually looked around.
-    var go = M.ui.go;
-    if (typeof go === 'function') {
-      M.ui.go = function (screen) {
-        var out = go.apply(this, arguments);
-        try { track(screen); } catch (err) { /* never break the demo for this */ }
-        return out;
-      };
-    }
+    // Offer it once after the visitor has actually looked around. Screens are changed through a
+    // function private to app.js, so watch the shared state rather than trying to hook navigation.
+    var dwell = 0;
+    setInterval(function () {
+      var app = document.getElementById('app');
+      if (!app || app.hidden || dismissed || shownAuto || el) return;
+      dwell += 1;
+      try { track(M.ui.state && M.ui.state.screen); } catch (err) { /* never break the demo */ }
+      // Someone who settles on one screen and reads it is interested too, so time counts as well
+      // as navigation — but slowly, at four minutes, so it never feels like a pop-up.
+      if (!shownAuto && dwell >= 240) { shownAuto = true; open(); }
+    }, 1000);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
