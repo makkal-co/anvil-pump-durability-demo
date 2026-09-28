@@ -43,6 +43,13 @@ index.html#user=tech.demo&screen=manual&rack=4
 index.html#user=eng.demo&screen=graph&rack=3
 ```
 
+## Twenty questions your specification does not answer
+
+The demo is the conversation starter; **[docs/questions.md](docs/questions.md)** is the useful part.
+Twenty questions we end up asking on every test-system project — when a dwell actually starts, what
+a conditional step does when it times out, whether case drain flow is judged against a limit or
+against its own trend, who may switch an alarm off. Most of them change the design.
+
 ## What this does not model
 
 Stated plainly, because a demonstration that overclaims is worse than none:
