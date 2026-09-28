@@ -30,7 +30,7 @@
     const canStop = ['running', 'manual'].includes(r.status);
     el.innerHTML = `
       <header class="hdr rhdr">
-        <span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><span class="brand anvil-lockup"><svg class="anvil-mark" viewBox="0 0 64 50" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></span></span><span class="ctx">· REMOTE</span>
+        <span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><span class="brand anvil-lockup"><svg class="anvil-mark" viewBox="0 0 64 50" width="20" height="16" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" width="43" height="12" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></span></span><span class="ctx">· REMOTE</span>
         <span class="badge warn">🔒 Remote session · view + stop only</span>
         <span class="sp"></span>
         <span class="clock">${ui.clock(M.sim.now)}</span>

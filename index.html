@@ -4,15 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Anvil — hydraulic pump durability demo</title>
-<link rel="stylesheet" href="css/app.css">
-<link rel="stylesheet" href="css/batch2.css">
-<link rel="stylesheet" href="css/batch3.css">
+<link rel="stylesheet" href="css/app.css?v=20260928">
+<link rel="stylesheet" href="css/batch2.css?v=20260928">
+<link rel="stylesheet" href="css/batch3.css?v=20260928">
+<!-- ?v= on css/js makes a changed file a new URL, so a browser never pairs new HTML with a
+     stylesheet it cached earlier (Pages caches for 10 minutes). Bump it when you publish. -->
 <!-- Icons are inlined so they show from file:// as well as from Pages; nothing is fetched.
      Sources: assets/icons/. Regenerate these two lines if the mark changes. -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -6.75 64 64'%3E%3Cpath fill='%23fd5722' d='M3 15.5 C9 11 14 7.5 20 6.5 L61 6.5 L61 20.5 L45 20.5 L43.5 32 L52.5 32 L52.5 44 L13.5 44 L13.5 32 L22.5 32 L21 20.5 C14 20 7 18.2 3 15.5 Z'/%3E%3C/svg%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADJElEQVR42u2WzWucVRTGf8+5d6ZaIygGTAq1NGKIoiiIbkfBIroUkjTURdy7dhsC4sKV/g9+tbMQXImr5h9Qa9GipbW48GujYLHNvPee42Iy02nMTJKmimAPvLt7znnuc57z3BfuxP89tNuBALGI8WtHt7XzcxuudXx84zUsFkn/OgODG6tLBYiV+WmoTxMxA1CDAzGRwp12y+g1X+jMlXP5puaLJHWpdKmxcvxZ0Ose5WVL9gDW73tgSkJwl+HF3gL6AEZvHSePHnHabzqsWpasCWrjjsL7hMVBSS/Jao7QnwB5aw5BlxrLDy+7eMeyZmrPo/S8CpmEgWyPut1F1AEogxtAjjWMS3PTXvQuWScpTu15D9Qy9I+L0Fgn8DQFTHvxxlpGyqmdhCLwIEoQJWLCyux009HckQ8oEAXkAFkQfHDxMnBic2nu8XbxVzx4MYInUta9JOtTXwOve59/yrJh7s3IMu2Ees3h4UADxBoaNYY4tTCLl3nwBXeOBbxgpmfcwwU2wbjcTBbunxN85ZJZxLCuS54PmZVefNz66NIn2m4+nO0YGxtV2+Relo6fSofSe7VXi1CeILKS2inXzfpqPvP9+7dsxRGIJYw/yFzrVGZ/eJ6UPquNe38rxs8+tWQ0foJfHjrL3RuJa51648QG0Bla8e5vwRqmdTxWji24p68FFpNtRgFu7o+pe+XbQf7+GQDR6SSuXhVTU8GRn+6rtXyXTPfXiNDONh7JpFrjt5TyPD/O/j7M32Gs+3aVujz3pWU9WZvYcQwD+muJc/n05adu7TEaUL78yKNkf8OLB2AEEeglS3rQfTwDZlJ4/EzEpwgBbtlEsbd1+uKF7SP5u5q/6RcuJY7mw7ZqGmnVBO6BxjAnUHhg0gxtWx2goiXK9fgQuDCoPx7AjXezoeellnCGe6+kPYytRgQ9HyjfU8hIanY6myd4qUCZYOLajWOCLa/oW7isX28/AKSAKH1S9wdgG5o+g1LsD0BVi3ssJ8XBXuAtDXA9WnsD0O0rdNN75/Nmfq02BHYACE4kR5tezo/W/+//lg+d8HbFGCe8E3fiL5fMno+DmsM+AAAAAElFTkSuQmCC">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-<link rel="stylesheet" href="css/brand.css">
+<link rel="stylesheet" href="css/brand.css?v=20260928">
 </head>
 <body class="pre-login">
 
@@ -21,7 +23,7 @@
 <!-- Login -->
 <div id="login" class="login">
   <div class="login-card">
-    <div class="login-head"><span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><b class="brand anvil-lockup lg"><svg class="anvil-mark" viewBox="0 0 64 50" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></b></span><div>Hydraulic pump durability lab · demonstration interface · simulated data</div></div>
+    <div class="login-head"><span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><b class="brand anvil-lockup lg"><svg class="anvil-mark" viewBox="0 0 64 50" width="24" height="19" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" width="51" height="14" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></b></span><div>Hydraulic pump durability lab · demonstration interface · simulated data</div></div>
     <form class="login-body" id="loginForm">
       <label>User <select id="loginUser"></select></label>
       <label>Password <input type="password" id="loginPw" value="demo" autocomplete="off"></label>
@@ -40,7 +42,7 @@
 <!-- Application -->
 <div id="app" hidden>
   <header class="hdr">
-    <span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><span class="brand anvil-lockup"><svg class="anvil-mark" viewBox="0 0 64 50" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></span></span>
+    <span class="mk-brand"><svg class="mk-logo" viewBox="0 0 194.25 78.75" role="img" aria-label="Makkal"><use href="#mkLogo"></use></svg><span class="brand anvil-lockup"><svg class="anvil-mark" viewBox="0 0 64 50" width="20" height="16" aria-hidden="true"><use href="#mkAnvil"></use></svg><svg class="anvil-word" viewBox="0 0 2823 779" width="43" height="12" role="img" aria-label="Anvil"><use href="#mkAnvilWord"></use></svg></span></span>
     <span class="ctx" id="hdrCtx"></span>
     <span class="scope" id="hdrScope" title="Which stands this station shows"></span>
     <span class="sp"></span>
@@ -76,24 +78,24 @@
   });
 </script>
 
-<script charset="utf-8" src="js/data.js"></script>
-<script charset="utf-8" src="js/profile.js"></script>
-<script charset="utf-8" src="js/sim.js"></script>
-<script charset="utf-8" src="js/chart.js"></script>
-<script charset="utf-8" src="js/ui.js"></script>
-<script charset="utf-8" src="js/scr-overview.js"></script>
-<script charset="utf-8" src="js/scr-graph.js"></script>
-<script charset="utf-8" src="js/setups-preview.js"></script>
-<script charset="utf-8" src="js/scr-setups.js"></script>
-<script charset="utf-8" src="js/scr-manual.js"></script>
-<script charset="utf-8" src="js/scr-alarms.js"></script>
-<script charset="utf-8" src="js/scr-config.js"></script>
-<script charset="utf-8" src="js/scr-data.js"></script>
-<script charset="utf-8" src="js/scr-remote.js"></script>
-<script charset="utf-8" src="js/tour.js"></script>
-<script charset="utf-8" src="js/app.js"></script>
-<script charset="utf-8" src="js/brand.js"></script>
-<script charset="utf-8" src="js/onboard.js"></script>
-<script charset="utf-8" src="js/lead.js"></script>
+<script charset="utf-8" src="js/data.js?v=20260928"></script>
+<script charset="utf-8" src="js/profile.js?v=20260928"></script>
+<script charset="utf-8" src="js/sim.js?v=20260928"></script>
+<script charset="utf-8" src="js/chart.js?v=20260928"></script>
+<script charset="utf-8" src="js/ui.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-overview.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-graph.js?v=20260928"></script>
+<script charset="utf-8" src="js/setups-preview.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-setups.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-manual.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-alarms.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-config.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-data.js?v=20260928"></script>
+<script charset="utf-8" src="js/scr-remote.js?v=20260928"></script>
+<script charset="utf-8" src="js/tour.js?v=20260928"></script>
+<script charset="utf-8" src="js/app.js?v=20260928"></script>
+<script charset="utf-8" src="js/brand.js?v=20260928"></script>
+<script charset="utf-8" src="js/onboard.js?v=20260928"></script>
+<script charset="utf-8" src="js/lead.js?v=20260928"></script>
 </body>
 </html>
