@@ -10,7 +10,7 @@
   let root, canvas, geom;
 
   const H = 3600000;
-  const SHARE = '\\\\lab-fs01\\rotf';
+  const SHARE = '\\\\lab-fs01\\testdata';
 
   // ---- Deterministic pseudo-random, so the catalogue is stable between renders ----
   function rnd(seed) {

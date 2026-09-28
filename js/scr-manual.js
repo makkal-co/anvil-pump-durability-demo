@@ -1,5 +1,5 @@
 // Manual Control: drive each output outside a test, software/hard shutdown,
-// rack-power-off state (spec), command vs actual readback.
+// stand-power-off state, command vs actual readback.
 (function (M) {
   const ui = M.ui, esc = ui.esc;
   const AO = [
@@ -36,7 +36,7 @@
       }
       case 'poweroff':
         return `<div class="mc-power">
-          <div class="big">⛔ RACK POWER IS OFF</div>
+          <div class="big">⛔ STAND POWER IS OFF</div>
           <div>The safety relay is open. Hard shutdown is unavailable.</div>
           <div>Press the <b>physical reset button in the bay</b> to restore power. There is deliberately no software path.</div>
           <div class="muted">${esc(r.stopReason || '')}</div>
@@ -136,8 +136,8 @@
             <div class="panel-h">Shutdown</div>
             <div class="sdbtns">
               <button class="bigbtn soft" data-a="soft" ${['running', 'manual'].includes(r.status) && ui.can('stop') ? '' : 'disabled'}>
-                <span class="i">⏻</span><span><b>SOFTWARE SHUTDOWN</b><small>Orderly stop · 7 steps · rack stays powered</small></span></button>
-              <button class="bigbtn hard" data-a="hard" ${r.power && r.status !== 'shutdown' && ui.can('stop') && M.inScope(r) ? '' : 'disabled'} title="${!M.inScope(r) ? 'Hard shutdown is local to the cell — someone may be standing at that rack' : r.power ? '' : 'Unavailable while stand power is off (spec)'}">
+                <span class="i">⏻</span><span><b>SOFTWARE SHUTDOWN</b><small>Orderly stop · 7 steps · stand stays powered</small></span></button>
+              <button class="bigbtn hard" data-a="hard" ${r.power && r.status !== 'shutdown' && ui.can('stop') && M.inScope(r) ? '' : 'disabled'} title="${!M.inScope(r) ? 'Hard shutdown is local to the cell — someone may be standing at that stand' : r.power ? '' : 'Unavailable while stand power is off'}">
                 <span class="i">⛔</span><span><b>HARD SHUTDOWN</b><small>Stops, then drops the safety relay · reset only at the cell</small></span></button>
             </div>
           </div>
@@ -163,7 +163,7 @@
     const steps = (hard ? M.sim.HARD_STEPS : M.sim.SOFT_STEPS).map(([l], i) => `<div>${i + 1}. ${esc(l)}</div>`).join('');
     ui.modal({
       title: hard ? `Hard shutdown — ${r.name}` : `Software shutdown — ${r.name}`,
-      body: `<div>${hard ? 'The rack will stop and the <b>safety relay will drop out</b>. It cannot be restarted from any screen — someone must press the reset button in the bay.' : 'The rack will run the orderly stop sequence and remain powered.'}</div>
+      body: `<div>${hard ? 'The stand will stop and the <b>safety relay will drop out</b>. It cannot be restarted from any screen — someone must press the reset button in the bay.' : 'The stand will run the orderly stop sequence and remain powered.'}</div>
         <div class="mc-steps">${steps}</div>`,
       buttons: [{ label: 'Cancel' }, { label: hard ? 'Hard shutdown' : 'Software shutdown', cls: 'danger', onClick: () => { ui.cmd(r, hard ? 'HARD_STOP' : 'SOFT_STOP'); render(root); } }],
     });

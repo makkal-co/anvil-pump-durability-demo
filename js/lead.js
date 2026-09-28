@@ -12,7 +12,7 @@
 (function () {
   var ENDPOINT = 'https://formspree.io/f/xbglqjkn';
   var DEMO = 'anvil-pump-durability-demo';
-  var EMAIL = 'ajay@makkal.co';
+  var EMAIL = 'support@makkal.co';
   var AUTO_AFTER = 3;                 // distinct screens before it offers itself once
 
   var seen = {}, shownAuto = false, dismissed = false, el = null;

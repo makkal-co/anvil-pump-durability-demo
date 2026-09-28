@@ -1,4 +1,4 @@
-// Lab overview: one tile per rack, online and offline, with live key values.
+// Lab overview: one tile per stand, online and offline, with live key values.
 (function (M) {
   const ui = M.ui, esc = ui.esc;
   const KEY = ['speed', 'tankT', 'hxInT', 'dispT', 'sysP', 'caseP'];

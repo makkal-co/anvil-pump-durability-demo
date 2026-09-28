@@ -26,7 +26,7 @@
       stats: { mean: true, min: true, max: true, rms: true },
       trig: { red: true, yellow: true, manual: true, step: false },
       burstSec: 30,
-      mirror: '\\\\lab-fs01\\rotf\\rack-' + String(rack.id).padStart(2, '0'),
+      mirror: '\\\\lab-fs01\\testdata\\stand-' + String(rack.id).padStart(2, '0'),
       retention: 'Not yet defined',
     };
     return rack.cfg;
@@ -69,7 +69,7 @@
         <button class="btn sm" data-a="exportcal">Export calibration sheet…</button>
       </div>
       <div class="gridwrap"><table class="grid"><thead><tr><th class="num">#</th><th>Channel</th><th>Module</th><th class="num">Terminal</th><th class="num">Raw</th><th class="num">Engineering range</th><th class="num">Scale</th><th class="num">Offset</th><th class="num">Live</th><th class="num">Last cal</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
-      <div class="mc-note">Channel <b>names</b> are lab-wide, so a setup built on one rack means the same thing on another; the <b>module and terminal</b> binding is per rack. Adding stand 11 should be this table plus a calibration sheet — never a code change.</div>
+      <div class="mc-note">Channel <b>names</b> are lab-wide, so a procedure built on one stand means the same thing on another; the <b>module and terminal</b> binding is per stand. Adding a stand should be this table plus a calibration sheet — never a code change.</div>
       <div class="mc-note">Open question — is a linear two-point fit always enough, or do some sensors need a polynomial or a lookup table? And does a screen like this hold the certificates and due dates, or does that belong in the quality system you already run?</div>`;
   }
 
@@ -144,9 +144,9 @@
           <span>Module</span><select id="mMod" ${dis} style="grid-column:span 4">${MODULES.map((m) => `<option ${m === k.module ? 'selected' : ''}>${m}</option>`).join('')}</select><span></span>
           <span>Terminal</span><input id="mTerm" value="${esc(k.term)}" ${dis} style="grid-column:span 4"><span></span>
         </div>
-        <label style="display:block;margin-top:8px"><input type="checkbox" id="mUsed" ${k.used ? 'checked' : ''} ${dis}> Channel in use on this rack</label>
-        <div class="muted">The name is lab-wide — renaming it here renames it on every screen and in exported files, so a setup stays portable between stands. The module and terminal are this rack's wiring.</div>
-        <div class="mc-note">A rack that is running keeps running: a mapping change applies at the next test load, never mid-test.</div>`,
+        <label style="display:block;margin-top:8px"><input type="checkbox" id="mUsed" ${k.used ? 'checked' : ''} ${dis}> Channel in use on this stand</label>
+        <div class="muted">The name is lab-wide — renaming it here renames it on every screen and in exported files, so a setup stays portable between stands. The module and terminal are this stand's wiring.</div>
+        <div class="mc-note">A stand that is running keeps running: a mapping change applies at the next test load, never mid-test.</div>`,
       buttons: lock ? [{ label: 'Close' }] : [{ label: 'Cancel' }, {
         label: 'Apply', cls: 'primary', onClick: (m) => {
           const name = m.querySelector('#mName').value.trim();
@@ -198,7 +198,7 @@
     }).join('');
     return `<div class="rates">
       <div class="panel">
-        <div class="panel-h">Acquisition and logging tiers <span class="muted" style="font-weight:400">— rack level, not per test setup (spec)</span></div>
+        <div class="panel-h">Acquisition and logging tiers <span class="muted" style="font-weight:400">— stand level, not per procedure</span></div>
         <div class="gridwrap" style="border:0"><table class="grid"><thead><tr><th>Group</th><th>Acquire at</th><th>Log continuously at</th><th>Burst capture</th></tr></thead><tbody>${rows}</tbody></table></div>
         <div class="rates-opts">
           <div><b>Keep per logged interval</b> ${['mean', 'min', 'max', 'rms'].map((s) => `<label><input type="checkbox" data-stat="${s}" ${c.stats[s] ? 'checked' : ''} ${dis}> ${s === 'rms' ? 'RMS' : s}</label>`).join('')}

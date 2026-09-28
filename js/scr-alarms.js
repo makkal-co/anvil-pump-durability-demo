@@ -1,5 +1,5 @@
 // Alarms: active and historical alarms with the test step, action taken,
-// acknowledge per alarm or in bulk, rack or lab scope, detail pane, jump to graph, CSV export.
+// acknowledge per alarm or in bulk, stand or lab scope, detail pane, jump to graph, CSV export.
 (function (M) {
   const ui = M.ui, esc = ui.esc;
   const st = { scope: 'rack', show: { un: true, ack: true, clr: true }, sev: 'all', sel: new Set(), detail: null };
@@ -36,7 +36,7 @@
     if (!list.length) return '<div class="muted" style="padding:18px">No alarms match the current filter.</div>';
     const lab = st.scope === 'lab';
     return `<table class="grid al"><thead><tr>
-      <th style="width:26px"><input type="checkbox" data-all></th>${lab ? '<th>Rack</th>' : ''}<th>Sev</th><th>Time</th><th>Test step at the moment of the alarm</th><th>Channel</th><th>Value</th><th>Limit</th><th>State</th><th>Action taken</th><th></th>
+      <th style="width:26px"><input type="checkbox" data-all></th>${lab ? '<th>Stand</th>' : ''}<th>Sev</th><th>Time</th><th>Test step at the moment of the alarm</th><th>Channel</th><th>Value</th><th>Limit</th><th>State</th><th>Action taken</th><th></th>
     </tr></thead><tbody>${list.map(({ r, a }) => `
       <tr class="row ${a.state === 'ACTIVE' ? (a.sev === 'R' ? 'unR' : 'unY') : ''} ${st.detail === a.id ? 'sel' : ''}" data-id="${a.id}" data-r="${r.id}">
         <td><input type="checkbox" data-pick="${a.id}" ${st.sel.has(a.id) ? 'checked' : ''}></td>
@@ -137,7 +137,7 @@
 
   function exportCsv() {
     const q = (s) => `"${String(s).replace(/"/g, '""')}"`;
-    const lines = [['Rack', 'Severity', 'Time', 'Test step', 'Channel', 'Value', 'Limit', 'State', 'Action'].join(',')];
+    const lines = [['Stand', 'Severity', 'Time', 'Test step', 'Channel', 'Value', 'Limit', 'State', 'Action'].join(',')];
     rows().forEach(({ r, a }) => lines.push([r.name, a.sev === 'R' ? 'RED' : 'YELLOW', ui.clock(a.t), a.path, chName(a), val(a), lim(a), stateText(a), a.action].map(q).join(',')));
     const blob = new Blob([lines.join('\r\n')], { type: 'text/csv' });
     const link = document.createElement('a');

@@ -143,6 +143,6 @@ is worth half an hour of conversation before anyone writes a specification.
 **[Makkal](https://makkal.co)** builds test-system software — DAQ, control, HMI and data — mostly on
 NI cRIO and cDAQ. We modernise test rigs whose original software nobody can maintain any more.
 
-**ajay@makkal.co**
+**support@makkal.co**
 
 *The demonstration interface these questions came from: https://makkal-co.github.io/anvil-pump-durability-demo/ — simulated data, not a product.*

@@ -1,4 +1,4 @@
-// App frame: login, ribbon, rack rail, status bar, routing, simulation loop, demo menu.
+// App frame: login, ribbon, stand rail, status bar, routing, simulation loop, demo menu.
 (function (M) {
   const ui = M.ui, $ = ui.$, esc = ui.esc, S = ui.state;
 
@@ -116,7 +116,7 @@
       const led = $(`[data-led="${r.id}"]`); if (led) led.className = 'led ' + st.led;
       const sub = $(`[data-sub="${r.id}"]`); if (sub) sub.textContent = st.text;
     });
-    // Alarm ribbon button blinks for the selected rack (spec: red wins over yellow)
+    // Alarm ribbon button blinks for the selected stand (red wins over yellow)
     const r = ui.rack();
     const ab = $('#ribbon [data-s="alarms"]');
     if (ab) {
@@ -177,7 +177,7 @@
       { label: 'Selected rack: press safety reset button in cell', onClick: () => { const r = ui.rack(); if (r && M.sim.pressCellReset(r)) ui.toast(`${r.name}: safety relay re-armed by hand`); else ui.toast('Select a stand whose power is off'); go(S.screen); } },
       '-',
       { label: 'Open remote web view (as seen from home) ▸', onClick: () => M.remote.open() },
-      { label: M.scope.only ? 'Architecture: Option B — multi-rack shell, watches the whole lab' : 'Architecture: Option A — one instance per cell, sees its two stands only',
+      { label: M.scope.only ? 'Architecture: Option B — multi-stand shell, watches the whole lab' : 'Architecture: Option A — one instance per cell, sees its two stands only',
         onClick: () => {
           if (M.scope.cell == null) M.scope.cell = 2;
           M.scope.only = !M.scope.only;

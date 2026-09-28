@@ -92,6 +92,6 @@ Script errors render as a red banner at the top of the page.
 [Makkal](https://makkal.co) builds test-system software — DAQ, control, HMI and data — mostly on NI
 cRIO and cDAQ. We modernise test rigs whose original software nobody can maintain any more.
 
-If your lab has that problem, we would like to hear about it: **ajay@makkal.co**
+If your lab has that problem, we would like to hear about it: **support@makkal.co**
 
 *Demonstration interface. Simulated data. Not a product.*
